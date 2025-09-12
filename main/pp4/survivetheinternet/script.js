@@ -21378,7 +21378,7 @@ const Qx = Fx.extend({
     },
     parseBlob(t) {
         if (t.playerInfo = t.playerInfo || {}, t.playerInfo.username = t.playerName || "Audience", t.playerInfo.color && (t.playerInfo.avatar = t.playerInfo.color.frame, t.playerInfo.topBarColor = t.playerInfo.color.dark.hexString, t.playerInfo.bgColor = t.playerInfo.color.veryLight.hexString, t.playerInfo.textColor = t.playerInfo.color.veryLight.hexString, t.playerInfo.buttonColor = t.playerInfo.color.dark.hexString), t.state === "Gameplay" && (t.state = "Logo"), t.state === "Lobby" && (this.client.isRole("player") || (t.state = "Logo"), t.playerIsVIP = t.isAllowedToStartGame, t.playerCanStartGame = t.isAllowedToStartGame, t.playerCanCensor = t.canCensor, t.gameCanStart = ["CanStart", "Countdown", "PostGame"].indexOf(t.lobbyState) !== -1, t.gameIsStarting = t.lobbyState === "Countdown", t.gameFinished = t.lobbyState === "PostGame"), t.censorablePlayers && delete t.censorablePlayers, t.state === "EnterSingleText" && t.text && t.text.aboveBlackBox) {
-            const e = t.text.aboveBlackBox.match(/images\/survivetheinternet\/photos\/([a-zA-Z]+)\.jpg/);
+            const e = t.text.aboveBlackBox.match(/images\/survivetheinternet\/photos\/([a-zA-Z0-9]+)\.jpg/);
             if (e) {
                 const n = e[1],
                     i = this.altTexts[n];
@@ -21387,7 +21387,7 @@ const Qx = Fx.extend({
         }
         if (t.state === "Voting" && (t.choices = t.choices.map(e => {
                 if (!e.thumbnail) return e;
-                const n = e.thumbnail.match(/images\/survivetheinternet\/photos\/([a-zA-Z]+)-thumb\.jpg/);
+                const n = e.thumbnail.match(/images\/survivetheinternet\/photos\/([a-zA-Z0-9]+)-thumb\.jpg/);
                 if (n) {
                     const i = n[1].replace("-thumb", ""),
                         a = this.altTexts[i];
@@ -21395,7 +21395,7 @@ const Qx = Fx.extend({
                 }
                 return e
             })), t.state === "MakeSingleChoice" && t.text && t.text.blackBox) {
-            const e = t.text.blackBox.match(/(.*)<img src='images\/survivetheinternet\/photos\/([a-zA-Z]+)\.jpg'\/>(.*)/);
+            const e = t.text.blackBox.match(/(.*)<img src='images\/survivetheinternet\/photos\/([a-zA-Z0-9]+)\.jpg'\/>(.*)/);
             if (e) {
                 const n = e[2],
                     i = this.altTexts[n];
